@@ -1,9 +1,6 @@
-# Simple-todo-app
-Simple todo app with angularJS, ui-router, simple http-server and bootstrap
+# HCI Enrollment web project
 
-**Please install Node.js before using**
 
-On first use   
 run
 
 > npm install http-server -g
