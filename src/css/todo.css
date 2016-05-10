@@ -1,0 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.band_header {
+	color: #FFF; 
+	background-color: #1A191F;
+}
+
+#ku_bander {
+	font-size: 20px;
+	padding: 20px;
+    font-family: "Lato";
+}
+
+#user_setting {
+    padding-top: 10px;
+    font-family: "Lato";
+}
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #FFF;
+    cursor: default;
+    background-color: #72B300;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    font-size: 15px;
+    font-family: "Lato"
+}
+
+.nav-tabs>li>a {
+    color: #47804D;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Lato";
+    background-color: #BCFF48;
+}
+
+.modal-header {
+    background-color: #77dd77;
+ }
+
+#tab_title {
+	background-color: #72B300;
+	margin: 0px;
+	padding: 5px;
+	color: #FFFFFF;
+	font-size: 1px
+
+}
+
+#bg_body {
+ 	background-color: #FFFFFF;
+}
+
+#bg_panel {
+ 	background-color: #F1F1F1;
+}
+
+#searchbar {
+	 margin-top: 2cm;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+th {
+
+ 	border:none;
+}
+
+td {
+    border:none;
+}
+
+.tableInfo {
+    font-size: 25px;
+}
+
+#slideable {
+       
+    right: 0;
+    position: relative;
+    top: 0;
+}

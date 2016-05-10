@@ -1,0 +1,204 @@
+
+
+<div class="band_header"> 	
+	<div class="row">
+		<div class="col-md-8" id="ku_bander">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KU Registeration
+		</div>
+		<div class="col-md-offset-2 col-md-2"  id="user_setting">
+			 <span class="glyphicon glyphicon-user"></span> {{regisList.currentUser.id}} | 
+			<a ui-sref="login">logout</a>
+		</div>
+	</div>
+
+  	<div class="row">
+	  	<div class="col-md-4">
+		    <ul class="nav nav-tabs">
+	    <li ui-sref-active="active"><a ui-sref="information">INFORMATION</a></li>
+	    <li ui-sref-active="active"><a ui-sref="enrollment">ENROLLMENT</a></li>
+		    </ul>
+		</div>
+
+	</div>
+</div>	
+
+    <div id="bg_panel">
+    <div id="tab_title">&nbsp;</div>
+
+
+<div class="container">
+
+  
+
+
+		<form ng-submit="regisList.addTodo()">
+	    	<input id="searchbar" type="text" ng-model="search_course"  size="60" placeholder="Search by course ID or course name">
+	    </form>
+
+	    <br>
+	    <br>
+
+	    <!-- Search course-->
+	    <div class="col-md-6">
+		    <ul class="unstyled">
+		    	
+			    <div ng-repeat="course in regisList.course_list | filter: search_course" >
+			    		
+			    		<div class="panel panel-default"  >
+   						  <div class="panel-body">
+						    <b>{{course.id}}</b> 
+
+						    <i class="fa fa-info-circle" aria-hidden="true" 
+						       style="color:#6181FF;cursor:pointer" align="right"
+						       data-toggle="modal" ng-click="regisList.getCourseInfo(course)" data-target="#courseDes_modal">
+						    </i>
+
+						    <p>{{course.name.en}}</p>
+						    <p>{{course.name.th}}</p> 
+						    <button class="btn btn-success" ng-click="regisList.enroll(course)" 
+						    	    ng-disabled="regisList.isEnroll_lc(course)">
+						    	    
+									<div ng-if="regisList.isEnroll_lc(course)">
+										Enrolled
+									</div>
+									<div ng-if="!regisList.isEnroll_lc(course)">
+										Enroll
+									</div>
+
+						    	</button>
+						    
+						  </div>
+						</div>
+						
+		    	</div>
+		    
+		    </ul>
+		</div>
+
+
+		<!-- Enrolled course-->
+		<div class="col-md-6" id="slideable">
+		    <ul class="unstyled">
+		    	<div class="panel panel-success">
+   				<div class="panel-heading">
+   					<h4><b>Your enrollment</b> 
+   						<button ng-click="regisList.showJSON()" class="pull-right" data-toggle="tooltip" title="View JSON"
+   								style="color: #000000; font-size: 15px; padding: 5px">
+   							JSON
+   						</button>
+   					</h4> 
+   					<b>Credit:</b> {{regisList.totalCredit}}/22
+			    <div ng-repeat="enroll_course in regisList.enrolled_courses">
+			    		
+			    		<div class="panel panel-default">
+   						  <div class="panel-body">
+						    <b>{{enroll_course.id}}</b>  
+
+						    <i class="fa fa-info-circle" aria-hidden="true" 
+						    style="color:#6181FF;cursor:pointer" align="right"
+						    data-toggle="modal" ng-click="regisList.getCourseInfo(enroll_course)" 
+						    data-target="#courseDes_modal" >
+							</i>
+
+						    <p>{{enroll_course.name.en}}</p>
+						    <p>{{enroll_course.name.th}}</p> 
+						    <button class="btn btn-danger" ng-click="regisList.setPreDrop(enroll_course)" 
+						    		 data-toggle="modal" data-target="#dropConfirm_modal"> Drop </button>
+						    
+						  </div>
+						</div>
+				</div>
+				</div>	
+		    	</div>
+		    
+		    </ul>
+		</div>
+
+
+		<!-- Modal For Course Information-->
+		  <div class="modal fade" id="courseDes_modal" role="dialog">
+		    <div class="modal-dialog modal-lg">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header" bgcolor="#C8FF61">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <div class="modal-title">      	
+			          <h4> <b> {{regisList.selected_course.id}} - {{regisList.selected_course.name.en}} </b> <br> </h4>
+			          <h5> <b> ( {{regisList.selected_course.name.th}} )</b></h5> 
+		      	  </div>
+		        </div>
+		        <div class="modal-body">
+
+					<table class="courseInfo" style="width:100%">
+						<tr>
+							<th style="background-color: #eee">&nbsp;&nbsp;&nbsp;Section</th>
+						    <th style="background-color: #eee">Type</th>		
+						    <th style="background-color: #eee">Dates</td>
+						    <th style="background-color: #eee">Location</td>	
+						    <th style="background-color: #eee">Instructor</td>	
+						</tr>
+						<tr ng-repeat="moreInfo in regisList.selected_courseDeeper">
+						    <td>&nbsp;&nbsp;&nbsp;{{moreInfo.id}}</td>
+						    <td>{{moreInfo.type}}</td>		
+						    <td>{{moreInfo.date}}</td>
+						    <td>{{moreInfo.location}}</td>
+						    <td ng-repeat="instructor in moreInfo.instructors" >
+						    	{{instructor}}
+						    </td>
+						</tr>
+						</div>
+					</table>
+					<br>
+		        	
+		        	<b>Credit: </b> {{regisList.selected_course.credit.total}}({{regisList.selected_course.credit.lecture}}-{{regisList.selected_course.credit.lab}}-{{regisList.selected_course.credit.self}})
+
+		        	<br><br>
+		        	<h4>Course Description</h4>
+					<p> {{regisList.selected_course.description.en}} </p>
+		          	<p> {{regisList.selected_course.description.th}} </p>
+		          
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div>
+
+
+
+		  <!-- Modal For drop confirmation-->
+		  <div class="modal fade" id="dropConfirm_modal" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header" bgcolor="#C8FF61">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <div class="modal-title">
+		          	
+		          	<h4> <b>Drop Confirmation</b> </h4>
+     
+		      	  </div>
+		        </div>
+		        <div class="modal-body">
+		        	You are going to drop <b>" {{regisList.predrop_course.id}} - {{regisList.predrop_course.name.en}} ".</b> <br><br>
+		        	Are you sure? 
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-danger" data-dismiss="modal" 
+		          		  ng-click="regisList.drop(regisList.predrop_course)"> YES </button>
+		          <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div>
+   
+    
+  
+
+</div>
+

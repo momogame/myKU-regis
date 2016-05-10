@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="src/css/login.css">
+    <div ng-controller="LoginController as user">
+
+    <div class="login_bg">
+	    <div class="login_container">
+		    <div class="panel panel-default" id="paintThis" >
+		   		<div class="panel-body">
+			   		<h1>Login</h1>
+			        <form name="login">
+			            <label class="login_text"> Username </label> <input type="text" ng-model="userId"/> <br>
+			            <label class="login_text"> Password </label> <input type="password" ng-model="pswrd"/> <br>
+			            <input type="button" ng-click="user.authenticate(userId, pswrd)" value="Login"/>
+			            <input type="reset" value="Cancel"/>
+              </form>
+		   		</div>
+		   	</div>
+		  </div>
+	  </div>
+
+    </div>
+
+  </body>
+</html>

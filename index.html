@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="myKU-register">
+  <head>
+    <!-- CSS file -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/css/todo.css">
+  </head>
+  <body >
+
+    <div id="bg_body" >
+
+
+    <!-- Import scripts -->
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- App controller -->
+    <script src="src/js/controller/todo.js"></script>
+    <script src="src/js/service/service.js"></script>
+    <script src="src/js/route/route.js"></script>
+
+    <!-- some navigation -->
+    <div ng-controller="RegisterController as regisList">
+
+    <div ui-view></div>
+    </div>
+
+    </div>
+    
+
+  </body>
+</html>

@@ -1,0 +1,72 @@
+
+
+<div class="band_header"> 	
+	<div class="row">
+		<div class="col-md-8" id="ku_bander">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KU Registeration
+		</div>
+		<div class="col-md-offset-2 col-md-2"  id="user_setting">
+			<span class="glyphicon glyphicon-user"></span> {{regisList.currentUser.id}} | 
+			<a ui-sref="login">logout</a>
+		</div>
+	</div>
+
+  	<div class="row">
+	  	<div class="col-md-4">
+		    <ul class="nav nav-tabs">
+	    <li ui-sref-active="active"><a ui-sref="information">INFORMATION</a></li>
+	    <li ui-sref-active="active"><a ui-sref="enrollment">ENROLLMENT</a></li>
+		    </ul>
+		</div>
+
+	</div>
+</div>	
+
+
+    <div id="bg_panel">
+    <div id="tab_title">&nbsp;</div>
+
+<div class="container text-center">
+
+	<div style="padding: 35px">
+	  	<h2>
+	    	Student Information
+	  	</h2>
+  	</div>
+
+  	<center>
+	<div class="table-responsive">          
+	  <table class="tableInfo">
+	  	<tbody>
+	      <tr style="background-color: #cdf5d2">
+	        <th style="width:25%; padding: 15px">Student ID: </th>
+	        <td style="padding: 15px; padding-left: 50px"> {{regisList.currentUser.id}} </td>
+	      </tr>
+	    
+	      <tr>
+	        <th style="width:25%; padding: 15px">First Name: </th>
+	        <td style="padding: 15px; padding-left: 50px"> {{regisList.currentUser.name}} </td>
+	      </tr>
+
+	      <tr style="background-color: #cdf5d2">
+	        <th style="width:25% ; padding: 15px">Last Name: </th>
+	        <td style="padding: 15px; padding-left: 50px"> {{regisList.currentUser.surname}} </td>
+	      </tr>
+
+	      <tr>
+	        <th style="width:25% ; padding: 15px">Faculty: </th>
+	        <td style="padding: 15px; padding-left: 50px"> {{regisList.currentUser.facul}} </td>
+	      </tr>
+
+	      <tr style="background-color: #cdf5d2">
+	        <th style="width:25% ; padding: 15px">Major: </th>
+	        <td style="padding: 15px; padding-left: 50px"> {{regisList.currentUser.major}} </td>
+	      </tr>
+
+	    </tbody>
+	  </table>
+	  </div>
+	  </center>
+
+</div>
+
