@@ -90,3 +90,16 @@ td {
     position: relative;
     top: 0;
 }
+
+.min section {
+    
+    position: fixed;
+    top: 0;
+    width: 40%;
+    max-height:500px;
+
+}
+
+.top-panel {
+    margin: 10px;
+}

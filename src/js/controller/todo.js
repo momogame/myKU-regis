@@ -176,7 +176,21 @@ angular.module('myKU-register', ['ui.router'])
     $state.go('information');
   }
 
-
-
 })
   
+
+
+.directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+             if (this.pageYOffset >= 267) {
+                 scope.boolChangeClass = true;
+                 console.log('Scrolled below header. with Y=' + this.pageYOffset );
+             } else {
+                 scope.boolChangeClass = false;
+                 console.log('Header is in view.');
+             }
+            scope.$apply();
+        });
+    };
+});  
